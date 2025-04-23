@@ -103,11 +103,11 @@ const handleLogin = async () => {
       password: password.value,
       role: role.value,
     });
-    alert("로그인 성공");
-    router.push("/");
     // 로그인 성공 후 리다이렉트
+    await router.push("/chat-list");
   } catch (error) {
     console.error("로그인 오류:", error);
+    alert("로그인 실패");
   }
 };
 </script>

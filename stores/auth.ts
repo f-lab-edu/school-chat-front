@@ -10,11 +10,12 @@ export const useAuthStore = defineStore("auth", {
 
   actions: {
     async login(payload: { email: string; password: string; role: UserRole }) {
+      const config = useRuntimeConfig();
       const response = await $fetch<{
         user: User;
         accessToken: string;
         refreshToken: string;
-      }>("/api/login", {
+      }>(`${config.public.apiBaseUrl}/api/v1/auth/login`, {
         method: "POST",
         body: payload,
       });
